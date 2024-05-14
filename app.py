@@ -1,5 +1,15 @@
 todo_list = []
+todo_list_file_name = "~/test/todo_list.txt"
 
+try:
+    with open(todo_list_file_name, "r") as file:
+        for line in file:
+            todo_list.append(line.strip())        
+except FileNotFoundError:
+    print("No items saved. Starting with empty list.")
+
+
+# Loop forever
 while True:
     print()
     print()
@@ -29,6 +39,10 @@ while True:
         continue
 
     if choice == "X":
+        with open(todo_list_file_name, "w") as file:
+            for todo in todo_list:
+                file.write(f"{todo}\n")
+            
         break
     
     print("Invalid choice " + choice)
