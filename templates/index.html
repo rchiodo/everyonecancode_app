@@ -37,7 +37,7 @@
                         <br />
                     </div>
                     <span class="input-group-text">
-                        <input type="text" id="todo" name="todo" class="form-control" placeholder="Add a new to-do item">
+                        <input type="text" id="todo" name="todo" class="form-control" placeholder="Add a new task">
                         
                         <button type="button" class="btn btn-outline-secondary" onclick="captureVoice()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
@@ -60,8 +60,10 @@
                             {% for recommend in g.todo.recommendations %}
                             <a href="{{ recommend.link }}" class="list-group-item list-group-item-action"> {{ recommend.title }} </a>
                             {% endfor %}
-                          </div>
-                          <br />
+                        </div>
+                        <br />
+                        Don't like recommendations? 
+                        <a href="{{ url_for('recommend', id=g.todo.id, refresh=true) }}" class="btn btn-info btn-fixed-width"> Refresh </a>
                     </div>
                 </div>
                 {% endif %}
